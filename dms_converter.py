@@ -16,15 +16,15 @@ def dms2dd(initial_record_dms):
         for i in range(0,len(working_elements)): #iterates through full list
             if i == 3: #east-west direction item
                 if working_elements[i] != 'E' or 'e' or 'W' or 's': #checks if direction is not valid
-                    print("ERR 1")
+                    print("ERR 1: bad E|W")
                     return('None, None')
             elif i == 7: #north-south direction item
                 if working_elements[i] != 'N' or 'n' or 'S' or 's':
-                    print("ERR 2")
+                    print("ERR 2: bad N|S")
                     return('None, None')
             else: #all other non-directional items, which should be numbers
                 if working_elements == False:
-                    print("ERR 3")
+                    print("ERR 3: bad DMS values")
                     return('None, None')
         
         for i in range(0,3): #iterates through longitude deg/min/sec and converts to decimal
@@ -34,7 +34,7 @@ def dms2dd(initial_record_dms):
             lat = lat + int(working_elements[4+i])/(60**i)
         
         if long > 180 or long < 0 or lat > 90 or lat < 0: #checks resultant values against domain
-            print("ERR 4")
+            print("ERR 4: DD out of domain")
             return('None, None') #return value as failure if outside domain
         
         if working_elements[4] == 'S' or 's': #interpret north-south direction as sign
@@ -47,5 +47,5 @@ def dms2dd(initial_record_dms):
         
         return(record_dd)
     else:
-        print("ERR 5")
+        print("ERR 5: bad length")
         return('None, None') #return value as failure if not of valid length
