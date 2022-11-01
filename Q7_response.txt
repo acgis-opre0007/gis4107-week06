@@ -1,0 +1,3 @@
+To remove the "\n" line break character, Python contains a built-in function, splitlines(), that splits 
+a string at line breaks, removing them and creating a list of strings where each element represents a new 
+line.
