@@ -6,7 +6,7 @@ def dms2dd(initial_record_dms):
     """
 
     record_dd = ''
-    #initial_record_dms = str(initial_record_dms.splitlines()[0])
+    initial_record_dms = str(initial_record_dms.splitlines()[0])
     long = 0
     lat = 0
     parameterLength = len(initial_record_dms)
