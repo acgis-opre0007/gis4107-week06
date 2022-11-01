@@ -1,10 +1,8 @@
 def get_coords_from_gpx(gpx):
-    if gpx.startswith('<trpkt lat'):
-        coord = gpx.split('"')
-        lat = coord.rpartition('"')
-        lon = coord.lpartition('"')
-        return f'({lat,lon})'
+    if gpx.startswith('<trkpt lat'):
+        x = gpx.strip('<trkptlat=on> "')
+        lat = (x.rsplit('"'))[0]
+        lon = (x.rsplit('"'))[2]
+        return lat, lon
     else:
         return None, None
-
-get_coords_from_gpx('<trkpt lat="45.3888995" lon="-75.7472631">')
